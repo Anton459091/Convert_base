@@ -8,7 +8,7 @@ def convert_numbers():
     convert_from = int(entry_from.get())
     convert_to = int(entry_to.get())
 
-    with open(filename, 'r+') as file:
+    with open(filename, 'r') as file:
         text = file.read()                                  
         numbers = text.split()
     
@@ -24,7 +24,7 @@ def convert_numbers():
             if remainder < 10:
                 converted_number = str(remainder) + converted_number
             else:
-                converted_number = chr(remainder + 55) + converted_number  # для представления букв в системах счисления.
+                converted_number = chr(remainder + 55) + converted_number  # для представления букв A-F
             
             decimal_number = decimal_number // convert_to
 
@@ -32,7 +32,10 @@ def convert_numbers():
 
     with open('converted_numbers.txt', 'w') as file:
         
-        width = max( max(len(word) for word in converted_numbers) , max(len(word) for word in numbers) ) + 2
+        if convert_from == 2:
+            width = 6
+        else:
+            width = max(max(len(word) for word in converted_numbers), max(len(word) for word in numbers) + 2)
 
         i = 0 
         j = 0
@@ -55,34 +58,34 @@ def convert_numbers():
             else:
                 file.write(number.center(width))
 
-    label_result.config(text='Conversion completed')
+    label_result.config(text='Конвертация выполнена')
 
     os.startfile("converted_numbers.txt")
         
 def browse_file():
-    filename = filedialog.askopenfilename(initialdir="/", title="Select a File")
+    filename = filedialog.askopenfilename(initialdir="/", title="Найти")
     entry_filename.delete(0, tk.END)
     entry_filename.insert(tk.END, filename)
 
 # Создание графического интерфейса
 window = tk.Tk()
 window.title("Конвертер")
-window.geometry("300x350")
+window.geometry("350x380")
 
 # Создание элементов интерфейса
-label_filename = tk.Label(window, text="Имя файла:", font= 20,  pady=10)
-entry_filename = tk.Entry(window, width= 37,font= 20)
-button_browse = tk.Button(window, text="найти", command=browse_file, font= 20)
+label_filename = tk.Label(window, text="Имя файла:", font=("Arial", 15),  pady=10, )
+entry_filename = tk.Entry(window, width= 26,font=("Arial", 15))
+button_browse = tk.Button(window, text="Найти", command=browse_file, font=("Arial", 15))
 
-label_from = tk.Label(window, text="Из какой системы счисления:", font= 20, pady=10)
-entry_from = tk.Entry(window, width= 37,font= 20)
+label_from = tk.Label(window, text="Из какой системы счисления:", font=("Arial", 15), pady=10)
+entry_from = tk.Entry(window, width= 26,font=("Arial", 15))
 
-label_to = tk.Label(window, text="В какую систему счисления:", font= 20, pady=10)
-entry_to = tk.Entry(window, width= 37,font= 20)
+label_to = tk.Label(window, text="В какую систему счисления:", font=("Arial", 15), pady=10)
+entry_to = tk.Entry(window, width= 26,font=("Arial", 15))
 
-button_convert = tk.Button(window, text="Конвертировать", command=convert_numbers, font= 20)
+button_convert = tk.Button(window, text="Конвертировать", command=convert_numbers, font=("Arial", 15))
 
-label_result = tk.Label(window, text="",font= 20)
+label_result = tk.Label(window, text="",font=("Arial", 15))
 
 # Размещение элементов на экране
 label_filename.pack()

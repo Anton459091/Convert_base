@@ -2,7 +2,6 @@ import os   # Импортируется модуль os, который пре�
 import tkinter as tk # Импортируется модуль tkinter под псевдонимом tk, который используется для создания графического интерфейса.
 from tkinter import filedialog # Импортируется класс filedialog из модуля tkinter, который позволяет выбирать файлы через диалоговое окно.
 
-
 def convert_numbers():
 # Определяется функция convert_numbers, которая будет вызываться при нажатии 
 # на кнопку "Конвертировать". Функция получает значение из поля ввода имени файла
@@ -82,22 +81,22 @@ def browse_file():
 # Создание графического интерфейса
 window = tk.Tk()
 window.title("Конвертер")
-window.geometry("300x350")
+window.geometry("350x375")
 
 # Создание элементов интерфейса
-label_filename = tk.Label(window, text="Имя файла:", font= 20,  pady=10)
-entry_filename = tk.Entry(window, width= 37,font= 20)
-button_browse = tk.Button(window, text="найти", command=browse_file, font= 20)
+label_filename = tk.Label(window, text="Имя файла:", font=("Arial", 15), pady=10)
+entry_filename = tk.Entry(window, width= 26,font=("Arial", 15))
+button_browse = tk.Button(window, text="найти", command=browse_file, font=("Arial", 15))
 
-label_from = tk.Label(window, text="Из какой системы счисления:", font= 20, pady=10)
-entry_from = tk.Entry(window, width= 37,font= 20)
+label_from = tk.Label(window, text="Из какой системы счисления:", font=("Arial", 15), pady=10)
+entry_from = tk.Entry(window, width= 26,font=("Arial", 15))
 
-label_to = tk.Label(window, text="В какую систему счисления:", font= 20, pady=10)
-entry_to = tk.Entry(window, width= 37,font= 20)
+label_to = tk.Label(window, text="В какую систему счисления:", font=("Arial", 15), pady=10)
+entry_to = tk.Entry(window, width= 26,font=("Arial", 15))
 
-button_convert = tk.Button(window, text="Конвертировать", command=convert_numbers, font= 20)
+button_convert = tk.Button(window, text="Конвертировать", command=convert_numbers, font=("Arial", 15))
 
-label_result = tk.Label(window, text="",font= 20)
+label_result = tk.Label(window, text="",font=("Arial", 15))
 
 # Размещение элементов на экране
 label_filename.pack()
