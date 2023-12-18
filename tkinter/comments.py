@@ -82,7 +82,7 @@ def browse_file():
 # Создание графического интерфейса
 window = tk.Tk()
 window.title("Конвертер")
-window.geometry("350x350")
+window.geometry("300x350")
 
 # Создание элементов интерфейса
 label_filename = tk.Label(window, text="Имя файла:", font= 20,  pady=10)
